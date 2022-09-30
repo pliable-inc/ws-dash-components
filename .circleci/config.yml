@@ -16,10 +16,6 @@ jobs:
           command: |
             pip install -r requirements.txt
             npm install
-      - persist_to_workspace:
-          root: should_halt
-          paths:
-            - should_halt
   build:
     docker:
       - image: cimg/python:3.10.7-node
