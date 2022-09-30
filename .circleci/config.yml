@@ -47,4 +47,6 @@ jobs:
 workflows:
   build-and-publish:
     jobs:
-      - build-and-publish
+      - build-and-publish:
+          context:
+            - whetstone-aws-auth
