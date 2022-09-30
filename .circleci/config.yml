@@ -14,6 +14,7 @@ jobs:
       - run:
           name: Check/Run Poetry Update
           command: |
+            pip install -r requirements.txt
             npm install
             npm run build
 
