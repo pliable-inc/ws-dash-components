@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@18.9.1
+  node: cimg/node@18.9.1
 
 jobs: 
   build-project:
