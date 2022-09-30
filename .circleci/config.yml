@@ -41,3 +41,5 @@ workflows:
       - build:
           context:
             - whetstone-aws-auth
+          requires:
+            - setup-build
