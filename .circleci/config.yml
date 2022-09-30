@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Check/Run Poetry Update
+          name: Install Build Dependencies
           command: |
             pip install -r requirements.txt
             npm install
@@ -20,6 +20,29 @@ jobs:
           name: Build Components
           command: |
             npm run build
+      - run:
+          name: Set Environment Variables
+          command: |
+            echo "export BUILD_DATE=$(date +%Y-%m-%d-%H-%M-%S)" >> $BASH_ENV
+            echo 'export SHORT_SHA=$(echo ${CIRCLE_SHA1} | cut -c1-8)' >> $BASH_ENV
+            echo 'export FULL_VERSION="0.0.0+$BUILD_DATE-$SHORT_SHA"' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: Authenticate to CodeArtifact
+          command: |
+            pip install awscli
+            echo "export POETRY_HTTP_BASIC_WHETSTONEPYTHON_USERNAME=aws" >> $BASH_ENV
+            echo "export POETRY_HTTP_BASIC_WHETSTONEPYTHON_PASSWORD=$(aws codeartifact get-authorization-token --domain-owner 676770652859 --domain wsaipipes-repos-codeartifact-domain --query 'authorizationToken' --output text)" >> $BASH_ENV
+      - run:
+          name: Build Python Package
+          command: |
+            poetry version "$FULL_VERSION"
+            poetry build
+      - run:
+          name: Publish Python Package
+          command: |
+            echo "Poetry publish username: $POETRY_HTTP_BASIC_WHETSTONEPYTHON_USERNAME"
+            poetry publish -r whetstonepython
 
 workflows:
   build-and-publish:

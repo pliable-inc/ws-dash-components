@@ -6,6 +6,15 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 packages = [{include = "ws_dash_components"}]
 
+include = [
+    "ws_dash_components/*.*"
+]
+
+[[tool.poetry.source]]
+name = "whetstonepython"
+url = "https://wsaipipes-repos-codeartifact-domain-676770652859.d.codeartifact.us-east-1.amazonaws.com/pypi/wsaipipes-repos-codeartifact-repo/"
+
+
 [tool.poetry.dependencies]
 python = "^3.9"
 dash = "^2.6.2"
