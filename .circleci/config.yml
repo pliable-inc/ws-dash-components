@@ -4,7 +4,7 @@ orbs:
   aws-ecr: circleci/aws-ecr@7.3.0
 
 jobs: 
-  setup-build:
+  build-and-publish:
     docker:
       - image: cimg/python:3.10.7-node
     resource_class: small
@@ -16,15 +16,6 @@ jobs:
           command: |
             pip install -r requirements.txt
             npm install
-  build:
-    docker:
-      - image: cimg/python:3.10.7-node
-    resource_class: small
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/ci_workspace
       - run:
           name: Build Components
           command: |
@@ -33,9 +24,4 @@ jobs:
 workflows:
   build-and-publish:
     jobs:
-      - setup-build
-      - build:
-          context:
-            - whetstone-aws-auth
-          requires:
-            - setup-build
+      - build-and-publish
