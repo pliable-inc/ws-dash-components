@@ -1,0 +1,11 @@
+include ws_dash_components/ws_dash_components.min.js
+include ws_dash_components/ws_dash_components.min.js.map
+include ws_dash_components/async-*.js
+include ws_dash_components/async-*.js.map
+include ws_dash_components/*-shared.js
+include ws_dash_components/*-shared.js.map
+include ws_dash_components/metadata.json
+include ws_dash_components/package-info.json
+include README.md
+include LICENSE
+include package.json

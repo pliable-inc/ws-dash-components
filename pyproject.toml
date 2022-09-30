@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ws-dash-components"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "ws_dash_components"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+dash = "^2.6.2"
+PyYAML = "^6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
