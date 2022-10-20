@@ -2,7 +2,7 @@
   "name": "ws_dash_components",
   "version": "0.0.1",
   "description": "Project Description",
-"repository": {
+  "repository": {
     "type": "git",
     "url": "git://github.com/whetstone-ventures/ws-dash-components.git"
   },
@@ -31,15 +31,17 @@
     "@uppy/file-input": "^3.0.1",
     "@uppy/progress-bar": "^3.0.1",
     "@uppy/react": "^3.0.2",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "react-json-tree": "^0.17.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.12/xlsx-0.18.12.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
-    "@plotly/webpack-dash-dynamic-import": "^1.2.0",
     "@plotly/dash-component-plugins": "^1.2.0",
+    "@plotly/webpack-dash-dynamic-import": "^1.2.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "copyfiles": "^2.1.1",
@@ -52,8 +54,8 @@
     "react": "^16.8.6",
     "react-docgen": "^4.1.1",
     "react-dom": "^16.8.6",
-    "styled-jsx": "^3.2.1",
     "style-loader": "^0.23.1",
+    "styled-jsx": "^3.2.1",
     "terser-webpack-plugin": "^2.3.0",
     "webpack": "4.36.1",
     "webpack-cli": "3.3.6",

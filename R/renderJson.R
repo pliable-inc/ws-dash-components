@@ -1,17 +1,17 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-s3Upload <- function(id=NULL, files=NULL, label=NULL, schema_id=NULL) {
+renderJson <- function(id=NULL, data=NULL, invert_theme=NULL, max_depth=NULL, theme=NULL) {
     
-    props <- list(id=id, files=files, label=label, schema_id=schema_id)
+    props <- list(id=id, data=data, invert_theme=invert_theme, max_depth=max_depth, theme=theme)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
     component <- list(
         props = props,
-        type = 'S3Upload',
+        type = 'RenderJson',
         namespace = 'ws_dash_components',
-        propNames = c('id', 'files', 'label', 'schema_id'),
+        propNames = c('id', 'data', 'invert_theme', 'max_depth', 'theme'),
         package = 'wsDashComponents'
         )
 

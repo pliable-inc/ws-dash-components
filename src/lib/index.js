@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
-import S3Upload from './components/S3Upload.react';
+import S3Uploader from './components/S3Uploader.react';
+import RenderJson from './components/RenderJson.react';
 
 export {
-    S3Upload
+    S3Uploader,
+    RenderJson
 };

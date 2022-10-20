@@ -1,4 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export(S3Upload)
+export(RenderJson)
+export(S3Uploader)
+export(renderJson)
 export(s3Upload)
+export(s3Uploader)
+export(s3Uploaderr)

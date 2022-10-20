@@ -5,7 +5,8 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "0.0.1"
 
-include("jl/s3upload.jl")
+include("jl/renderjson.jl")
+include("jl/s3uploader.jl")
 
 function __init__()
     DashBase.register_package(
