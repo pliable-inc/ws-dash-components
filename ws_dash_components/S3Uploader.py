@@ -20,7 +20,7 @@ Keyword arguments:
 
 - maxUploads (default 5)
 
-- parallelUploads (default 5):
+- parallelUploads (default 1):
     Limit the amount of uploads going on at the same time. This is
     passed through to XHRUpload;  Set to 0 to disable limiting.
 

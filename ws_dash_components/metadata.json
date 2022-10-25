@@ -112,7 +112,7 @@
         "required": false,
         "description": "Limit the amount of uploads going on at the same time. This is passed through to XHRUpload; \nSet to 0 to disable limiting.",
         "defaultValue": {
-          "value": "5",
+          "value": "1",
           "computed": false
         }
       },

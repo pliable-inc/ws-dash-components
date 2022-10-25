@@ -44,7 +44,7 @@ export default class S3Uploader extends Component {
                       new_upload.storage_key = signed_upload_req.storage_key;
 
                       // set file info to state
-                      let new_files = {}
+                      let new_files = Object.assign({}, this.props.files);
                       new_files[file.id] = new_upload
                       this.props.setProps({
                         "files": new_files
@@ -66,7 +66,7 @@ export default class S3Uploader extends Component {
                 file_updates.progress.bytesUploaded = progress.bytesUploaded;
                 file_updates.progress.bytesTotal = progress.bytesTotal;
                 file_updates.progress.percentage = parseInt((progress.bytesUploaded/progress.bytesTotal) * 100);
-                let updates = {}
+                let updates = Object.assign({}, this.props.files);
                 updates[file.id] = file_updates;
                 this.props.setProps({
                     "files": updates
@@ -78,7 +78,15 @@ export default class S3Uploader extends Component {
                 let file_updates = Object.assign({}, this.props.files[file.id]);
                 file_updates.uploadURL = response.uploadURL;
                 file_updates.progress.uploadComplete = true;
-                let updates = {}
+                fetch('/file-ingestion//source-file-uploaded', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(file_updates)
+                })
+                let updates = Object.assign({}, this.props.files);
                 updates[file.id] = file_updates;
                 this.props.setProps({
                     "files": updates
@@ -87,8 +95,17 @@ export default class S3Uploader extends Component {
 
            this.uppy.on('upload-error', (file, error, response) => {
                 let file_updates = Object.assign({}, this.props.files[file.id]);
+                file_updates.error = error;
                 file_updates.uploadError = true;
-                let updates = {}
+                fetch('/file-ingestion//source-file-upload-error', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(file_updates)
+                })
+                let updates = Object.assign({}, this.props.files);
                 updates[file.id] = file_updates;
                 this.props.setProps({
                     "files": updates
@@ -131,7 +148,7 @@ export default class S3Uploader extends Component {
 S3Uploader.defaultProps = {
     files: {},
     label: 'Drop files here or %{browse}',
-    parallelUploads: 5,
+    parallelUploads: 1,
     maxUploads: 5
 };
 
@@ -152,7 +169,7 @@ S3Uploader.propTypes = {
     /**
      * The files being uploaded.
      */
-     files: PropTypes.objectOf(PropTypes.object),
+    files: PropTypes.objectOf(PropTypes.object),
 
     /**
      * Dash-assigned callback that should be called to report property changes
