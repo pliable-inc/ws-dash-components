@@ -23,6 +23,7 @@ export default class S3Uploader extends Component {
               limit: 5,
               timeout: 60000,
               getUploadParameters: async (file) => {
+                console.log('Getting upload params');
                   const response = await fetch(`/file-ingestion/sign-upload-request`,
                       {
                       method: 'POST',

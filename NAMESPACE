@@ -1,8 +1,10 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+export(AgGrid)
 export(RenderJson)
 export(S3Uploader)
 export(renderJson)
+export(agGrid)
 export(s3Upload)
 export(s3Uploader)
 export(s3Uploaderr)
