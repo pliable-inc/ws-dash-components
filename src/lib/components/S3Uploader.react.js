@@ -79,7 +79,7 @@ export default class S3Uploader extends Component {
                 let file_updates = Object.assign({}, this.props.files[file.id]);
                 file_updates.uploadURL = response.uploadURL;
                 file_updates.progress.uploadComplete = true;
-                fetch('/file-ingestion//source-file-uploaded', {
+                fetch('/file-ingestion/source-file-uploaded', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -98,7 +98,7 @@ export default class S3Uploader extends Component {
                 let file_updates = Object.assign({}, this.props.files[file.id]);
                 file_updates.error = error;
                 file_updates.uploadError = true;
-                fetch('/file-ingestion//source-file-upload-error', {
+                fetch('/file-ingestion/source-file-upload-error', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
