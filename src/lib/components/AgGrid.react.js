@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import { AgGridReact } from 'ag-grid-react';
 
@@ -18,6 +18,10 @@ export default class AgGrid extends Component {
         this.props.setProps({selectedRows: selectedRows});
     }
 
+    getMainMenuItems(params) {
+        return ['filterMenuTab']
+    }
+
     render() {
         const {id, columnDefs, setProps, rowData} = this.props;
 
@@ -31,7 +35,8 @@ export default class AgGrid extends Component {
                         rowSelection='single' 
                         onSelectionChanged={this.onSelectionChanged.bind(this)}
                         columnDefs={columnDefs}
-                        rowData={rowData}>
+                        rowData={rowData}
+                        >
                     </AgGridReact>
                 </div>
             </div>
